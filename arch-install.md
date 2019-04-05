@@ -111,3 +111,9 @@ It is also good to find a faster mirror; see https://www.archlinux.org/mirrorlis
 ## Post-Install Steps
 1. `# localectl set-locale LANG="en_US.UTF-8"`
 0. 
+
+## Network Stuff
+1. Make sure you have a hostname in /etc/hostname
+0. `systemctl restart dhcpcd`
+0. `ip link set ennnnn up`
+0. https://wiki.archlinux.org/index.php/Network_configuration#Set_the_hostname
