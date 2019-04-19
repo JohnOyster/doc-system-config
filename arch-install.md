@@ -114,12 +114,22 @@ within `HOOKS=(...)`
 0. `# umount -a`
 0. `# reboot` (keep your fingers crossed)
 
-## Post-Install Steps
+## Update locale information 
 1. `# localectl set-locale LANG="en_US.UTF-8"`
-0. 
+0. `curl https://ipapi.co/timezone | timedatectl set-timezone`
+0.  
 
 ## Network Stuff
 1. Make sure you have a hostname in /etc/hostname
-0. `systemctl restart dhcpcd`
-0. `ip link set ennnnn up`
-0. https://wiki.archlinux.org/index.php/Network_configuration#Set_the_hostname
+2. Install NetworkManager to help with starting network on startup
+  *  `pacman -S NetworkManager`
+  *  `systemctl enable NetworkManager`
+3. If you don't:
+  *  `systemctl restart dhcpcd`
+  *  `ip link set ennnnn up`
+  * https://wiki.archlinux.org/index.php/Network_configuration#Set_the_hostname
+
+## Because Lease Privilage
+0. Add a user!
+  * useradd -m -g wheel <username>
+  * passwd <username>
